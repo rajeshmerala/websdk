@@ -50,26 +50,27 @@
     href="https://experienceleague.adobe.com/docs/experience-platform/edge/home.html">Adobe Experience Platform Web
     SDK</a> 
   </p>
-  
+  <div id="decision">No Offers</div>
 
 </div>
 <script>
   
-function renderOffers(offers) {
-  const container = document.getElementById('offercode');
-  if (!container) return;
+function applyPersonalization(surfaceName) {
+  return function (result) {
+    const { propositions = [], decisions = [] } = result;
+    // send display event for the surface
+    decisions.forEach((decision) => sendDisplayEvent(decision));
 
-  const fragment = document.createDocumentFragment();
-
-  offers.forEach(offer => {
-    const div = document.createElement("div");
-    // If you trust the HTML, sanitize it first
-    div.innerHTML = DOMPurify.sanitize(offer.data.content);
-    fragment.appendChild(div);
-  });
-
-  container.appendChild(fragment);
+    const proposition = propositions.filter((p) =>
+      p.scope.endsWith(surfaceName)
+    )[0];
+    if (proposition) {
+      const element = document.getElementById("decision");
+      element.innerHTML = proposition.items[0].data.content;
+    }
+  };
 }
+
   
 function applyPersonalization(surfaceName) {
   return function (result) {
@@ -88,6 +89,7 @@ function applyPersonalization(surfaceName) {
 </script>
 </body>
 </html>
+
 
 
 
