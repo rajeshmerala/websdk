@@ -56,12 +56,19 @@
 <script>
   
 function renderOffers(offers) {
-  const container = document.getElementById("offercode");
+  const container = document.getElementById('offercode');
+  if (!container) return;
+
+  const fragment = document.createDocumentFragment();
+
   offers.forEach(offer => {
     const div = document.createElement("div");
-    div.innerHTML = offer.data.content; // HTML from AJO
-    container.appendChild(div);
+    // If you trust the HTML, sanitize it first
+    div.innerHTML = DOMPurify.sanitize(offer.data.content);
+    fragment.appendChild(div);
   });
+
+  container.appendChild(fragment);
 }
   
 function applyPersonalization(surfaceName) {
@@ -81,5 +88,6 @@ function applyPersonalization(surfaceName) {
 </script>
 </body>
 </html>
+
 
 
