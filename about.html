@@ -58,15 +58,25 @@
 function applyPersonalization(surfaceName) {
   return function (result) {
     const { propositions = [], decisions = [] } = result;
-    // send display event for the surface
+
+    // Send display event for each decision
     decisions.forEach((decision) => sendDisplayEvent(decision));
 
-    const proposition = propositions.filter((p) =>
-      p.scope.endsWith(surfaceName)
-    )[0];
+    // Find proposition for the given surface
+    const proposition = propositions.find((p) => p.scope.endsWith(surfaceName));
+
     if (proposition) {
       const element = document.getElementById("decision");
-      element.innerHTML = proposition.items[0].data.content;
+
+      // Clear previous content
+      element.innerHTML = "";
+
+      // Loop through all items and append them
+      proposition.items.forEach((item) => {
+        const offerDiv = document.createElement("div");
+        offerDiv.textContent = item.data.content; // or use innerHTML if content has HTML
+        element.appendChild(offerDiv);
+      });
     }
   };
 }
@@ -89,6 +99,7 @@ function applyPersonalization(surfaceName) {
 </script>
 </body>
 </html>
+
 
 
 
