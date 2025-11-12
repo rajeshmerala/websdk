@@ -71,11 +71,11 @@ function applyPersonalization(surfaceName) {
       // Clear previous content
       element.innerHTML = "";
 
-      // Loop through all items and append them with proper HTML
+      // Loop through all items and append them as separate DIVs
       proposition.items.forEach((item) => {
         const offerDiv = document.createElement("div");
-        offerDiv.className = "offer"; // Add a CSS class for styling
-        offerDiv.textContent = item.data.content;
+        offerDiv.className = "offer"; // CSS class for styling
+        offerDiv.textContent = item.data.content; // or innerHTML if content has HTML
         element.appendChild(offerDiv);
       });
     }
@@ -99,6 +99,7 @@ function applyPersonalization(surfaceName) {
 </script>
 </body>
 </html>
+
 
 
 
