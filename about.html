@@ -71,16 +71,16 @@ function applyPersonalization(surfaceName) {
       // Clear previous content
       element.innerHTML = "";
 
-      // Loop through all items and append them
+      // Loop through all items and append them with proper HTML
       proposition.items.forEach((item) => {
         const offerDiv = document.createElement("div");
-        offerDiv.textContent = item.data.content; // or use innerHTML if content has HTML
+        offerDiv.className = "offer"; // Add a CSS class for styling
+        offerDiv.textContent = item.data.content;
         element.appendChild(offerDiv);
       });
     }
   };
 }
-
   
 /*function applyPersonalization(surfaceName) {
   return function (result) {
@@ -99,6 +99,7 @@ function applyPersonalization(surfaceName) {
 </script>
 </body>
 </html>
+
 
 
 
