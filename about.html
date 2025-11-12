@@ -58,26 +58,15 @@
 function applyPersonalization(surfaceName) {
   return function (result) {
     const { propositions = [], decisions = [] } = result;
-
-    // Send display event for each decision
+    // send display event for the surface
     decisions.forEach((decision) => sendDisplayEvent(decision));
 
-    // Find proposition for the given surface
-    const proposition = propositions.find((p) => p.scope.endsWith(surfaceName));
-
+    const proposition = propositions.filter((p) =>
+      p.scope.endsWith(surfaceName)
+    )[0];
     if (proposition) {
       const element = document.getElementById("decision");
-
-      // Clear previous content
-      element.innerHTML = "";
-
-      // Loop through all items and append them as separate DIVs
-      proposition.items.forEach((item) => {
-        const offerDiv = document.createElement("div");
-        offerDiv.className = "offer"; // CSS class for styling
-        offerDiv.textContent = item.data.content; // or innerHTML if content has HTML
-        element.appendChild(offerDiv);
-      });
+      element.innerHTML = proposition.items[0].data.content;
     }
   };
 }
@@ -99,6 +88,7 @@ function applyPersonalization(surfaceName) {
 </script>
 </body>
 </html>
+
 
 
 
