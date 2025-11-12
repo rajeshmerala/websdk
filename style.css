@@ -11,7 +11,7 @@ img.ajo-decision {
 
 }
 #decision {
-  display: flex; /* or block if you want vertical */
+  display: flex;
   flex-direction: column; /* stack vertically */
   gap: 10px; /* space between offers */
 }
@@ -21,4 +21,6 @@ img.ajo-decision {
   border: 1px solid #ccc;
   background-color: #f9f9f9;
   border-radius: 4px;
+  font-size: 16px;
 }
+
