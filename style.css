@@ -8,4 +8,17 @@ img.ajo-decision {
 
 #some-buttons {
   margin: 20px 0;
+
+}
+#decision {
+  display: flex; /* or block if you want vertical */
+  flex-direction: column; /* stack vertically */
+  gap: 10px; /* space between offers */
+}
+
+.offer {
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 4px;
 }
