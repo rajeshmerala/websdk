@@ -25,7 +25,10 @@
         // https://experienceleague.adobe.com/docs/experience-platform/edge/personalization/manage-flicker.html?lang=en
         //     <script src="https://assets.adobedtm.com/4ef014d90ea4/aae94b798bc1/launch-dd1ed7b95c1d-development.min.js" async></script>
 
-
+       alloy("sendEvent",{
+        renderDecision: true,
+        decisionScopes:["__view__"]
+    });
     </script>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -104,6 +107,7 @@
     </body>
 
 </html>
+
 
 
 
