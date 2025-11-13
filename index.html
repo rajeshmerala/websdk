@@ -98,7 +98,7 @@
         <script>
 
 
-        function applyPersonalization(surfaceName) {
+        function applyPersonalizationweb(surfaceName) {
             return function (result) {
                 const { propositions = [] } = result;
 
@@ -107,8 +107,8 @@
                 )[0];
 
                 if (proposition) {
-                    const element = document.getElementById('webbased');
-                    element.innerHTML += proposition.items[0].data.content;
+                    const el = document.getElementById('webbased');
+                    el.innerHTML += proposition.items[0].data.content;
                 }
             };
         }
@@ -117,6 +117,7 @@
     </body>
 
 </html>
+
 
 
 
