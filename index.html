@@ -93,10 +93,31 @@
                 }
             };
         }
+        
+    </script>
+        <script>
+
+
+        function applyPersonalization(surfaceName) {
+            return function (result) {
+                const { propositions = [] } = result;
+
+                const proposition = propositions.filter((p) =>
+                    p.scope.endsWith(surfaceName)
+                )[0];
+
+                if (proposition) {
+                    const element = document.getElementById('webbased');
+                    element.innerHTML += proposition.items[0].data.content;
+                }
+            };
+        }
+        
     </script>
     </body>
 
 </html>
+
 
 
 
