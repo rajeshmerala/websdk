@@ -55,25 +55,9 @@
 
   <div id="webbased">Web Based Experience</div>
 </div>
-  <script>
-    function applyPersonalization(surfaceName) {
-  return function (result) {
-    const { propositions = [], decisions = [] } = result;
-    // send display event for the surface
-    decisions.forEach((decision) => sendDisplayEvent(decision));
-
-    const proposition = propositions.filter((p) =>
-      p.scope.endsWith(surfaceName)
-    )[0];
-    if (proposition) {
-      const element = document.getElementById("decision");
-      element.innerHTML = proposition.items[0].data.content;
-    }
-  };
-}
-  </script>
 </body>
 </html>
+
 
 
 
